@@ -13,9 +13,9 @@
 
 Cypress.Commands.add('createDefaultTodos', function () {
 
-  let TODO_ITEM_ONE = 'buy some cheese'
-  let TODO_ITEM_TWO = 'feed the cat'
-  let TODO_ITEM_THREE = 'book a doctors appointment'
+  let TODO_ITEM_ONE = '1 buy some cheese'
+  let TODO_ITEM_TWO = '2 feed the cat'
+  let TODO_ITEM_THREE = '3 book a doctors appointment'
 
   // begin the command here, which by will display
   // as a 'spinning blue state' in the UI to indicate
@@ -103,4 +103,25 @@ Cypress.Commands.add('addAxeCode', () => {
       win.document.head.appendChild(script)
     })
   })
+})
+
+//====
+import todos from '../fixtures/todos-list.json'
+
+Cypress.Commands.add('createMyTodos', function () {
+
+  cy.get('.new-todo')
+  .type(`${todos.todosList.todo1}{enter}`)
+  .type(`${todos.todosList.todo2}{enter}`)
+  .type(`${todos.todosList.todo3}{enter}`)
+
+  return cy.get('.todo-list li')
+})
+
+Cypress.Commands.add('createMyTodo', function () {
+
+  cy.get('.new-todo')
+  .type(`${todos.todosList.todo1}{enter}`)
+  
+  return cy.get('.todo-list li')
 })

@@ -15,6 +15,10 @@ declare namespace Cypress {
      */
     createTodo(title: string): Chainable<any>
 
+    createMyTodos(): Chainable<any>
+
+    createMyTodo(title: string): Chainable<any>
+
     /**
      * Command that injects Axe core library into app html.
      * @example
